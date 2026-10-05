@@ -1,222 +1,616 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Beckham Lawrence</title>
-<script>
-(function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}
-if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
-document.documentElement.setAttribute('data-theme',t)})();
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#F9F8F3; --surface:#FFFFFF; --text:#1C1E1B; --muted:#4F524B;
-  --accent:#B87B31; --accent2:#435844; --line:#E5E2D9; --on-accent:#FFFFFF;
-  --glow1:rgba(107,142,112,.18); --glow2:rgba(212,163,89,.16); --shadow:rgba(28,30,27,.45);
-  --hero-bg:#435844; --hero-text:#F9F8F3; --hero-p:#EEEBE0; --hero-hi:#E9C98F; --hero-line:rgba(249,248,243,.22);
-  --serif:'Cinzel',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'Fira Code',ui-monospace,monospace;
-  color-scheme:light; box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#141311; --surface:#1F221E; --text:#F2EFE9; --muted:#B8B5AB;
-    --accent:#D4A359; --accent2:#6B8E70; --line:#33332D; --on-accent:#141311;
-    --glow1:rgba(107,142,112,.14); --glow2:rgba(212,163,89,.09); --shadow:rgba(0,0,0,.6);
-    --hero-bg:#263528; --hero-text:#F2EFE9; --hero-p:#D9D5CA; --hero-hi:#D4A359; --hero-line:rgba(242,239,233,.16);
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#141311; --surface:#1F221E; --text:#F2EFE9; --muted:#B8B5AB;
-  --accent:#D4A359; --accent2:#6B8E70; --line:#33332D; --on-accent:#141311;
-  --glow1:rgba(107,142,112,.14); --glow2:rgba(212,163,89,.09); --shadow:rgba(0,0,0,.6);
-  --hero-bg:#263528; --hero-text:#F2EFE9; --hero-p:#D9D5CA; --hero-hi:#D4A359; --hero-line:rgba(242,239,233,.16);
-  color-scheme:dark;
-}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*,*::before,*::after{box-sizing:inherit}
-body{
-  margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.65;
-  background-image:
-    radial-gradient(ellipse 60% 30% at 10% 0%, var(--glow1), transparent 70%),
-    radial-gradient(ellipse 50% 30% at 95% 40%, var(--glow2), transparent 70%);
-  background-repeat:no-repeat; transition:background-color .3s,color .3s;
-}
-main{max-width:1120px; margin:0 auto; padding:clamp(14px,3vw,40px) clamp(14px,3vw,24px) 24px}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Beckham Lawrence</title>
+  <script>
+    (function () {
+      var t = null; try { t = localStorage.getItem('theme') } catch (e) { }
+      if (t !== 'light' && t !== 'dark') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light' }
+      document.documentElement.setAttribute('data-theme', t)
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F9F8F3;
+      --surface: #FFFFFF;
+      --text: #1C1E1B;
+      --muted: #4F524B;
+      --accent: #B87B31;
+      --accent2: #435844;
+      --line: #E5E2D9;
+      --on-accent: #FFFFFF;
+      --glow1: rgba(107, 142, 112, .18);
+      --glow2: rgba(212, 163, 89, .16);
+      --shadow: rgba(28, 30, 27, .45);
+      --hero-bg: #435844;
+      --hero-text: #F9F8F3;
+      --hero-p: #EEEBE0;
+      --hero-hi: #E9C98F;
+      --hero-line: rgba(249, 248, 243, .22);
+      --serif: 'Cinzel', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --mono: 'Fira Code', ui-monospace, monospace;
+      color-scheme: light;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
 
-/* Theme toggle */
-.theme{
-  position:fixed; z-index:10; top:calc(env(safe-area-inset-top,0px) + 12px); right:calc(env(safe-area-inset-right,0px) + 12px);
-  width:44px; height:44px; display:grid; place-items:center; cursor:pointer; padding:0;
-  background:var(--surface); color:var(--text); border:1px solid var(--line);
-  transition:border-color .2s,color .2s,background-color .3s;
-}
-.theme:hover{border-color:var(--accent); color:var(--accent)}
-.theme svg{width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
-.theme .sun{display:none}
-:root[data-theme="dark"] .theme .sun{display:block}
-:root[data-theme="dark"] .theme .moon{display:none}
+    @media (prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #141311;
+        --surface: #1F221E;
+        --text: #F2EFE9;
+        --muted: #B8B5AB;
+        --accent: #D4A359;
+        --accent2: #6B8E70;
+        --line: #33332D;
+        --on-accent: #141311;
+        --glow1: rgba(107, 142, 112, .14);
+        --glow2: rgba(212, 163, 89, .09);
+        --shadow: rgba(0, 0, 0, .6);
+        --hero-bg: #263528;
+        --hero-text: #F2EFE9;
+        --hero-p: #D9D5CA;
+        --hero-hi: #D4A359;
+        --hero-line: rgba(242, 239, 233, .16);
+        color-scheme: dark;
+      }
+    }
 
-/* Full-width cards */
-.c{
-  position:relative; width:100%; background:var(--surface); border:1px solid var(--line);
-  padding:clamp(28px,6vw,80px); margin-top:clamp(14px,2.5vw,24px); transition:background-color .3s,border-color .3s;
-}
-.c:first-child{margin-top:0}
-.c::after{content:""; position:absolute; top:-1px; left:clamp(28px,6vw,80px); width:72px; height:5px; background:var(--accent)}
-h2{
-  font-family:var(--serif); font-weight:900; font-size:clamp(1.55rem,7.4vw,4.6rem);
-  line-height:1; letter-spacing:.01em; margin:0 0 clamp(28px,5vw,56px); overflow-wrap:anywhere;
-}
+    :root[data-theme="dark"] {
+      --bg: #141311;
+      --surface: #1F221E;
+      --text: #F2EFE9;
+      --muted: #B8B5AB;
+      --accent: #D4A359;
+      --accent2: #6B8E70;
+      --line: #33332D;
+      --on-accent: #141311;
+      --glow1: rgba(107, 142, 112, .14);
+      --glow2: rgba(212, 163, 89, .09);
+      --shadow: rgba(0, 0, 0, .6);
+      --hero-bg: #263528;
+      --hero-text: #F2EFE9;
+      --hero-p: #D9D5CA;
+      --hero-hi: #D4A359;
+      --hero-line: rgba(242, 239, 233, .16);
+      color-scheme: dark;
+    }
 
-/* Hero */
-.hero{background:var(--hero-bg); border-color:var(--hero-bg); color:var(--hero-text); min-height:clamp(440px,78vh,680px); display:flex; flex-direction:column; justify-content:space-between; gap:36px; overflow:hidden}
-.hero::before{content:""; position:absolute; inset:10px; border:1px solid var(--hero-line); pointer-events:none}
-.hero h1{font-family:var(--serif); font-weight:900; font-size:clamp(2.6rem,12.5vw,8.6rem); line-height:.92; letter-spacing:.01em; margin:0}
-.hero h1 span{display:block}
-.hero h1 span+span{margin-left:clamp(24px,14vw,200px); color:var(--hero-hi)}
-.hero p{margin:0 0 0 auto; max-width:44ch; font-size:1.05rem; border-left:2px solid var(--accent); padding-left:18px; color:var(--hero-p)}
-.actions{display:flex; flex-wrap:wrap; gap:12px}
-.btn{
-  font-family:var(--mono); font-size:.88rem; font-weight:500; text-decoration:none; padding:12px 22px;
-  border:1px solid var(--hero-text); color:var(--hero-text); transition:background .2s,color .2s,border-color .2s;
-}
-.btn:hover{border-color:var(--accent); background:var(--accent); color:var(--on-accent)}
-.btn.solid{background:var(--accent); border-color:var(--accent); color:var(--on-accent)}
-.btn.solid:hover{background:var(--hero-text); border-color:var(--hero-text); color:var(--hero-bg)}
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
 
-/* Projects: staggered 12-col grid */
-.grid{display:grid; grid-template-columns:repeat(12,1fr); gap:20px; align-items:start}
-.proj{position:relative; border:1px solid var(--line); background:var(--bg); padding:clamp(22px,3vw,36px); display:flex; flex-direction:column; gap:12px; transition:border-color .2s,background-color .3s}
-.proj::before{content:""; position:absolute; top:-1px; left:24px; width:32px; height:4px; background:var(--accent2); transition:background .2s}
-.proj:hover{border-color:var(--accent)} .proj:hover::before{background:var(--accent)}
-.proj:nth-child(1){grid-column:1/span 7}
-.proj:nth-child(2){grid-column:8/span 5; margin-top:56px}
-.proj:nth-child(3){grid-column:1/span 5}
-.proj:nth-child(4){grid-column:6/span 7; margin-top:56px}
-.proj h3{font-family:var(--serif); font-weight:700; font-size:clamp(1.3rem,2.4vw,1.9rem); margin:8px 0 0; line-height:1.1; overflow-wrap:anywhere}
-.proj p{margin:0; color:var(--muted)}
-.proj a{font-family:var(--mono); font-size:.88rem; color:var(--accent2); text-decoration:none; align-self:flex-start; border-bottom:1px solid currentColor; margin-top:6px; transition:color .2s}
-.proj a:hover{color:var(--accent)}
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit
+    }
 
-/* Skills: centered stacking mini cards, stacking at top */
-.skills h2{text-align:right}
-.skills::after{left:auto; right:clamp(28px,6vw,80px)}
-dl{margin:0; padding:0 0 10vh; display:flex; flex-direction:column; align-items:center; gap:clamp(48px,12vh,120px)}
-.mini{
-  position:sticky; top:calc(env(safe-area-inset-top,0px) + 16px + var(--i)*22px);
-  width:min(100%,700px); background:var(--bg); border:1px solid var(--line); border-top:4px solid var(--accent2);
-  padding:clamp(20px,3vw,30px) clamp(22px,3.4vw,38px); transform-origin:50% 0;
-  box-shadow:0 18px 28px -22px var(--shadow);
-  opacity:0; translate:0 70px;
-  transition:opacity .6s ease, translate .7s cubic-bezier(.2,.8,.2,1), border-top-color .2s, background-color .3s;
-}
-.mini.in{opacity:1; translate:0 0}
-.mini:hover{border-top-color:var(--accent)}
-dt{font-family:var(--mono); font-weight:500; font-size:.88rem; color:var(--accent2); margin-bottom:6px}
-dd{margin:0; font-size:clamp(1rem,1.6vw,1.15rem)}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.65;
+      background-image:
+        radial-gradient(ellipse 60% 30% at 10% 0%, var(--glow1), transparent 70%),
+        radial-gradient(ellipse 50% 30% at 95% 40%, var(--glow2), transparent 70%);
+      background-repeat: no-repeat;
+      transition: background-color .3s, color .3s;
+    }
 
-/* Filosofía */
-blockquote{
-  margin:0 0 clamp(28px,5vw,56px); max-width:18em; font-family:var(--serif); font-weight:700;
-  font-size:clamp(1.5rem,4.2vw,3rem); line-height:1.2; border-left:4px solid var(--accent); padding-left:clamp(16px,3vw,32px);
-}
-.how .body{max-width:700px; margin-left:auto}
-.how .body p{margin:0 0 1.2em; color:var(--muted); font-size:1.05rem}
-.how .body p:last-child{margin:0}
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: clamp(14px, 3vw, 40px) clamp(14px, 3vw, 24px) 24px
+    }
 
-footer{max-width:1120px; margin:0 auto; padding:20px clamp(14px,3vw,24px) 40px; display:flex; justify-content:space-between; gap:16px; font-family:var(--mono); font-size:.88rem}
-footer a{color:var(--accent2); text-decoration:none; border-bottom:1px solid currentColor; transition:color .2s}
-footer a:hover{color:var(--accent)}
+    a {
+      color: inherit
+    }
 
-@media (max-width:760px){
-  .proj:nth-child(n){grid-column:1/-1; margin-top:0}
-  .hero p{margin-left:0}
-}
-@media (prefers-reduced-motion:reduce){
-  .mini{opacity:1; translate:none; transition:none}
-}
-</style>
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px
+    }
+
+    /* Theme toggle */
+    .theme {
+      position: fixed;
+      z-index: 10;
+      top: calc(env(safe-area-inset-top, 0px) + 12px);
+      right: calc(env(safe-area-inset-right, 0px) + 12px);
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      padding: 0;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--line);
+      transition: border-color .2s, color .2s, background-color .3s;
+    }
+
+    .theme:hover {
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .theme svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round
+    }
+
+    .theme .sun {
+      display: none
+    }
+
+    :root[data-theme="dark"] .theme .sun {
+      display: block
+    }
+
+    :root[data-theme="dark"] .theme .moon {
+      display: none
+    }
+
+    /* Full-width cards */
+    .c {
+      position: relative;
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: clamp(28px, 6vw, 80px);
+      margin-top: clamp(14px, 2.5vw, 24px);
+      transition: background-color .3s, border-color .3s;
+    }
+
+    .c:first-child {
+      margin-top: 0
+    }
+
+    .c::after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: clamp(28px, 6vw, 80px);
+      width: 72px;
+      height: 5px;
+      background: var(--accent)
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(1.55rem, 7.4vw, 4.6rem);
+      line-height: 1;
+      letter-spacing: .01em;
+      margin: 0 0 clamp(28px, 5vw, 56px);
+      overflow-wrap: anywhere;
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--hero-bg);
+      border-color: var(--hero-bg);
+      color: var(--hero-text);
+      min-height: clamp(440px, 78vh, 680px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 36px;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px solid var(--hero-line);
+      pointer-events: none
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: clamp(2.6rem, 12.5vw, 8.6rem);
+      line-height: .92;
+      letter-spacing: .01em;
+      margin: 0
+    }
+
+    .hero h1 span {
+      display: block
+    }
+
+    .hero h1 span+span {
+      margin-left: clamp(24px, 14vw, 200px);
+      color: var(--hero-hi)
+    }
+
+    .hero p {
+      margin: 0 0 0 auto;
+      max-width: 44ch;
+      font-size: 1.05rem;
+      border-left: 2px solid var(--accent);
+      padding-left: 18px;
+      color: var(--hero-p)
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: .88rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 12px 22px;
+      border: 1px solid var(--hero-text);
+      color: var(--hero-text);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--on-accent)
+    }
+
+    .btn.solid {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--on-accent)
+    }
+
+    .btn.solid:hover {
+      background: var(--hero-text);
+      border-color: var(--hero-text);
+      color: var(--hero-bg)
+    }
+
+    /* Projects: staggered 12-col grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      align-items: start
+    }
+
+    .proj {
+      position: relative;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      padding: clamp(22px, 3vw, 36px);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color .2s, background-color .3s
+    }
+
+    .proj::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 24px;
+      width: 32px;
+      height: 4px;
+      background: var(--accent2);
+      transition: background .2s
+    }
+
+    .proj:hover {
+      border-color: var(--accent)
+    }
+
+    .proj:hover::before {
+      background: var(--accent)
+    }
+
+    .proj:nth-child(1) {
+      grid-column: 1/span 7
+    }
+
+    .proj:nth-child(2) {
+      grid-column: 8/span 5;
+      margin-top: 56px
+    }
+
+    .proj:nth-child(3) {
+      grid-column: 1/span 5
+    }
+
+    .proj:nth-child(4) {
+      grid-column: 6/span 7;
+      margin-top: 56px
+    }
+
+    .proj h3 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+      margin: 8px 0 0;
+      line-height: 1.1;
+      overflow-wrap: anywhere
+    }
+
+    .proj p {
+      margin: 0;
+      color: var(--muted)
+    }
+
+    .proj a {
+      font-family: var(--mono);
+      font-size: .88rem;
+      color: var(--accent2);
+      text-decoration: none;
+      align-self: flex-start;
+      border-bottom: 1px solid currentColor;
+      margin-top: 6px;
+      transition: color .2s
+    }
+
+    .proj a:hover {
+      color: var(--accent)
+    }
+
+    /* Skills: centered stacking mini cards, stacking at top */
+    .skills h2 {
+      text-align: right
+    }
+
+    .skills::after {
+      left: auto;
+      right: clamp(28px, 6vw, 80px)
+    }
+
+    dl {
+      margin: 0;
+      padding: 0 0 10vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(48px, 12vh, 120px)
+    }
+
+    .mini {
+      position: sticky;
+      top: calc(env(safe-area-inset-top, 0px) + 16px + var(--i)*22px);
+      width: min(100%, 700px);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--accent2);
+      padding: clamp(20px, 3vw, 30px) clamp(22px, 3.4vw, 38px);
+      transform-origin: 50% 0;
+      box-shadow: 0 18px 28px -22px var(--shadow);
+      opacity: 0;
+      translate: 0 70px;
+      transition: opacity .6s ease, translate .7s cubic-bezier(.2, .8, .2, 1), border-top-color .2s, background-color .3s;
+    }
+
+    .mini.in {
+      opacity: 1;
+      translate: 0 0
+    }
+
+    .mini:hover {
+      border-top-color: var(--accent)
+    }
+
+    dt {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: .88rem;
+      color: var(--accent2);
+      margin-bottom: 6px
+    }
+
+    dd {
+      margin: 0;
+      font-size: clamp(1rem, 1.6vw, 1.15rem)
+    }
+
+    /* Filosofía */
+    blockquote {
+      margin: 0 0 clamp(28px, 5vw, 56px);
+      max-width: 18em;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 4.2vw, 3rem);
+      line-height: 1.2;
+      border-left: 4px solid var(--accent);
+      padding-left: clamp(16px, 3vw, 32px);
+    }
+
+    .how .body {
+      max-width: 700px;
+      margin-left: auto
+    }
+
+    .how .body p {
+      margin: 0 0 1.2em;
+      color: var(--muted);
+      font-size: 1.05rem
+    }
+
+    .how .body p:last-child {
+      margin: 0
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px clamp(14px, 3vw, 24px) 40px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: .88rem
+    }
+
+    footer a {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      transition: color .2s
+    }
+
+    footer a:hover {
+      color: var(--accent)
+    }
+
+    @media (max-width:760px) {
+      .proj:nth-child(n) {
+        grid-column: 1/-1;
+        margin-top: 0
+      }
+
+      .hero p {
+        margin-left: 0
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      .mini {
+        opacity: 1;
+        translate: none;
+        transition: none
+      }
+    }
+  </style>
 </head>
+
 <body>
-<button class="theme" id="theme" type="button" aria-label="Cambiar tema claro/oscuro">
-  <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
-  <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-</button>
-<main>
-  <header class="c hero">
-    <h1><span>Beckham</span> <span>Lawrence</span></h1>
-    <p>Desarrollador Web y Técnico Informático con formación en Sistemas Microinformáticos y Redes (2025), actualmente ampliando conocimientos en Desarrollo de Aplicaciones Web en Madrid.</p>
-    <div class="actions">
-      <a class="btn solid" href="#">Currículum</a>
-      <a class="btn" href="#">Email</a>
-    </div>
-  </header>
+  <button class="theme" id="theme" type="button" aria-label="Cambiar tema claro/oscuro">
+    <svg class="moon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" />
+    </svg>
+    <svg class="sun" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+    </svg>
+  </button>
+  <main>
+    <header class="c hero">
+      <h1><span>Beckham</span> <span>Lawrence</span></h1>
+      <p>Desarrollador Web y Técnico Informático con formación en Sistemas Microinformáticos y Redes (2025), actualmente
+        ampliando conocimientos en Desarrollo de Aplicaciones Web en Madrid.</p>
+      <div class="actions">
+        <a class="btn solid" href="#">Currículum</a>
+        <a class="btn" href="#">Email</a>
+      </div>
+    </header>
 
-  <section class="c">
-    <h2>Proyectos</h2>
-    <div class="grid">
-      <article class="proj"><h3>Servidor_WP</h3><p>Servidor WordPress reproducible con Vagrant y Docker Compose, con scripts de instalación de Docker y sincronización automática vía Git.</p><a href="#">Ver Repo</a></article>
-      <article class="proj"><h3>Osayi</h3><p>App de notas basada en bases de datos personalizables con soporte Markdown. Guarda y carga tus bases de datos en JSON local.</p><a href="#">Ver Demo</a></article>
-      <article class="proj"><h3>PizzeríaLINK</h3><p>Simulador de pedidos de pizzería en HTML, CSS y JavaScript puro: selección de productos, tamaños y cálculo de precio en el cliente.</p><a href="#">Ver Sitio</a></article>
-      <article class="proj"><h3>Guild_Master</h3><p>App CRUD básica en PHP con la que estoy aprendiendo el lenguaje. Guarda, lee y modifica datos en un archivo JSON.</p><a href="#">Ver Repo</a></article>
-    </div>
-  </section>
+    <section class="c">
+      <h2>Proyectos</h2>
+      <div class="grid">
+        <article class="proj">
+          <h3>Servidor_WP</h3>
+          <p>Servidor WordPress reproducible con Vagrant y Docker Compose, con scripts de instalación de Docker y
+            sincronización automática vía Git.</p><a href="#">Ver Repo</a>
+        </article>
+        <article class="proj">
+          <h3>Osayi</h3>
+          <p>App de notas basada en bases de datos personalizables con soporte Markdown. Guarda y carga tus bases de
+            datos en JSON local.</p><a href="#">Ver Demo</a>
+        </article>
+        <article class="proj">
+          <h3>PizzeríaLINK</h3>
+          <p>Simulador de pedidos de pizzería en HTML, CSS y JavaScript puro: selección de productos, tamaños y cálculo
+            de precio en el cliente.</p><a href="#">Ver Sitio</a>
+        </article>
+        <article class="proj">
+          <h3>Guild_Master</h3>
+          <p>App CRUD básica en PHP con la que estoy aprendiendo el lenguaje. Guarda, lee y modifica datos en un archivo
+            JSON.</p><a href="#">Ver Repo</a>
+        </article>
+      </div>
+    </section>
 
-  <section class="c skills">
-    <h2>Habilidades Técnicas</h2>
-    <dl>
-      <div class="mini" style="--i:0"><dt>FRONTEND:</dt><dd>HTML, CSS, JavaScript y Angular, incluyendo consumo de APIs REST y manejo de datos en JSON</dd></div>
-      <div class="mini" style="--i:1"><dt>BACKEND:</dt><dd>Java y PHP como lenguajes de servidor, diseño y gestión de bases de datos con MySQL</dd></div>
-      <div class="mini" style="--i:2"><dt>SISTEMAS:</dt><dd>Administración de sistemas Windows y Linux, configuración de redes locales y fundamentos de seguridad</dd></div>
-      <div class="mini" style="--i:3"><dt>DESPLIEGE:</dt><dd>Contenedorización con Docker y Docker Compose, entornos de desarrollo reproducibles con Vagrant y control de versiones con Git y GitHub</dd></div>
-    </dl>
-  </section>
+    <section class="c skills">
+      <h2>Habilidades Técnicas</h2>
+      <dl>
+        <div class="mini" style="--i:0">
+          <dt>FRONTEND:</dt>
+          <dd>HTML, CSS, JavaScript y Angular, incluyendo consumo de APIs REST y manejo de datos en JSON</dd>
+        </div>
+        <div class="mini" style="--i:1">
+          <dt>BACKEND:</dt>
+          <dd>Java y PHP como lenguajes de servidor, diseño y gestión de bases de datos con MySQL</dd>
+        </div>
+        <div class="mini" style="--i:2">
+          <dt>SISTEMAS:</dt>
+          <dd>Administración de sistemas Windows y Linux, configuración de redes locales y fundamentos de seguridad</dd>
+        </div>
+        <div class="mini" style="--i:3">
+          <dt>DESPLIEGE:</dt>
+          <dd>Contenedorización con Docker y Docker Compose, entornos de desarrollo reproducibles con Vagrant y control
+            de versiones con Git y GitHub</dd>
+        </div>
+      </dl>
+    </section>
 
-  <section class="c how">
-    <h2>Filosofía de Trabajo</h2>
-    <blockquote>Para mí, programar es, además de un oficio, una artesanía.</blockquote>
-    <div class="body">
-      <p>Creo que la mejor solución no es la que más hace, sino la que hace justo lo necesario: efectiva y sin fricciones. Lo aplico tanto en mi entorno personal de estudio y trabajo como en mi forma de entender la programación.</p>
-      <p>Me encanta aprender --tanto ingeniería de software como cualquier otra disciplina que me interese-- de forma holística, sin quedarme en lo básico. Aspiro a crear aplicaciones excelentes en el futuro, con la misma calidad desde la perspectiva del cliente que desde la del desarrollador.</p>
-    </div>
-  </section>
-</main>
-<footer>
-  <a href="#">GitHub</a>
-  <a href="#">LinkedIn</a>
-</footer>
-<script>
-(function(){
-  var root=document.documentElement, btn=document.getElementById('theme');
-  btn.addEventListener('click',function(){
-    var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem('theme',next)}catch(e){}
-  });
-  var cards=[].slice.call(document.querySelectorAll('.mini'));
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){cards.forEach(function(c){c.classList.add('in')});return}
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:0});
-  cards.forEach(function(c){io.observe(c)});
-  var tick=false;
-  function update(){
-    cards.forEach(function(c,i){
-      var n=cards[i+1]; if(!n)return;
-      var d=n.getBoundingClientRect().top-c.getBoundingClientRect().top;
-      var p=Math.min(1,Math.max(0,1-(d-22)/c.offsetHeight));
-      c.style.scale=(1-.05*p).toFixed(3);
-    });
-    tick=false;
-  }
-  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(update)}},{passive:true});
-  update();
-})();
-</script>
+    <section class="c how">
+      <h2>Filosofía de Trabajo</h2>
+      <blockquote>Para mí, programar es, además de un oficio, una artesanía.</blockquote>
+      <div class="body">
+        <p>Creo que la mejor solución no es la que más hace, sino la que hace justo lo necesario: efectiva y sin
+          fricciones. Lo aplico tanto en mi entorno personal de estudio y trabajo como en mi forma de entender la
+          programación.</p>
+        <p>Me encanta aprender --tanto ingeniería de software como cualquier otra disciplina que me interese-- de forma
+          holística, sin quedarme en lo básico. Aspiro a crear aplicaciones excelentes en el futuro, con la misma
+          calidad desde la perspectiva del cliente que desde la del desarrollador.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <a href="#">GitHub</a>
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement, btn = document.getElementById('theme');
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next) } catch (e) { }
+      });
+      var cards = [].slice.call(document.querySelectorAll('.mini'));
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { cards.forEach(function (c) { c.classList.add('in') }); return }
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
+      cards.forEach(function (c) { io.observe(c) });
+      var tick = false;
+      function update() {
+        cards.forEach(function (c, i) {
+          var n = cards[i + 1]; if (!n) return;
+          var d = n.getBoundingClientRect().top - c.getBoundingClientRect().top;
+          var p = Math.min(1, Math.max(0, 1 - (d - 22) / c.offsetHeight));
+          c.style.scale = (1 - .05 * p).toFixed(3);
+        });
+        tick = false;
+      }
+      addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update) } }, { passive: true });
+      update();
+    })();
+  </script>
 </body>
+
 </html>
