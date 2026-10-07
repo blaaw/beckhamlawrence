@@ -7,8 +7,14 @@
   <title>Beckham Lawrence</title>
   <script>
     (function () {
-      var t = null; try { t = localStorage.getItem('theme') } catch (e) { }
-      if (t !== 'light' && t !== 'dark') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light' }
+      var t = null;
+      try { 
+        t = localStorage.getItem('theme') 
+      } catch (e) {}
+      
+      if (t !== 'light' && t !== 'dark') { 
+        t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light' 
+      }
       document.documentElement.setAttribute('data-theme', t)
     })();
   </script>
@@ -513,8 +519,8 @@
       <p>Desarrollador Web y Técnico Informático con formación en Sistemas Microinformáticos y Redes (2025), actualmente
         ampliando conocimientos en Desarrollo de Aplicaciones Web en Madrid.</p>
       <div class="actions">
-        <a class="btn solid" href="#">Currículum</a>
-        <a class="btn" href="#">Email</a>
+        <a class="btn solid" href="https://drive.google.com/file/d/1ic8gXCvN3qfLuLACI1ArWWR5Q3S0GwNw/view?usp=sharing">Currículum</a>
+        <a class="btn" href="mailto:beckham.lawrence04@gmail.com">Email</a>
       </div>
     </header>
 
@@ -524,22 +530,23 @@
         <article class="proj">
           <h3>Servidor_WP</h3>
           <p>Servidor WordPress reproducible con Vagrant y Docker Compose, con scripts de instalación de Docker y
-            sincronización automática vía Git.</p><a href="#">Ver Repo</a>
+            sincronización automática vía Git.</p><a href="https://github.com/blaaw/Proyecto-Final-AMPSIS">Ver Repo</a>
         </article>
         <article class="proj">
           <h3>Osayi</h3>
           <p>App de notas basada en bases de datos personalizables con soporte Markdown. Guarda y carga tus bases de
-            datos en JSON local.</p><a href="#">Ver Demo</a>
+            datos en JSON local.</p><a href="https://blaaw.github.io/osayi-v1.1/">Ver Demo</a>
         </article>
         <article class="proj">
           <h3>PizzeríaLINK</h3>
           <p>Simulador de pedidos de pizzería en HTML, CSS y JavaScript puro: selección de productos, tamaños y cálculo
-            de precio en el cliente.</p><a href="#">Ver Sitio</a>
+            de precio en el cliente.</p><a href="https://blaaw.github.io/pizzeria-link/">Ver Sitio</a>
         </article>
         <article class="proj">
           <h3>Guild_Master</h3>
-          <p>App CRUD básica en PHP con la que estoy aprendiendo el lenguaje. Guarda, lee y modifica datos en un archivo
-            JSON.</p><a href="#">Ver Repo</a>
+          <p>App CRUD básica en PHP con la que estoy aprendiendo el lenguaje. Se levanta con una imagen Docker mediante
+             Docker Compose y utiliza un archivo JSON para almacenar los datos.</p>
+             <a href="https://github.com/blaaw/Guild-master">Ver Repo</a>
         </article>
       </div>
     </section>
@@ -581,9 +588,9 @@
     </section>
   </main>
   <footer>
-    <a href="#">GitHub</a>
-    <a href="#">Instagram</a>
-    <a href="#">LinkedIn</a>
+    <a href="https://github.com/blaaw">GitHub</a>
+    <a href="https://www.instagram.com/beckhamlawrence_/">Instagram</a>
+    <a href="https://www.linkedin.com/in/beckham-lawrence-5195a430b">LinkedIn</a>
   </footer>
   <script>
     (function () {
@@ -591,13 +598,37 @@
       btn.addEventListener('click', function () {
         var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
-        try { localStorage.setItem('theme', next) } catch (e) { }
+        try { 
+          localStorage.setItem('theme', next) 
+        } catch (e) {}
       });
+
       var cards = [].slice.call(document.querySelectorAll('.mini'));
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { cards.forEach(function (c) { c.classList.add('in') }); return }
-      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
-      cards.forEach(function (c) { io.observe(c) });
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { 
+        cards.forEach(function (c) { 
+          c.classList.add('in') 
+        }); 
+        return 
+      }
+
+      var io = new IntersectionObserver(function (es) { 
+        es.forEach(function (e) { 
+          if (e.isIntersecting) { 
+            e.target.classList.add('in'); 
+            io.unobserve(e.target) 
+          } 
+        }) 
+      }, 
+      { 
+        rootMargin: '0px 0px -12% 0px', 
+        threshold: 0 
+      });
+
+      cards.forEach(function (c) { 
+        io.observe(c) 
+      });
       var tick = false;
+      
       function update() {
         cards.forEach(function (c, i) {
           var n = cards[i + 1]; if (!n) return;
@@ -607,7 +638,15 @@
         });
         tick = false;
       }
-      addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update) } }, { passive: true });
+      addEventListener('scroll', function () { 
+        if (!tick) { 
+          tick = true; 
+          requestAnimationFrame(update) 
+        } 
+      }, 
+      { 
+        passive: true 
+      });
       update();
     })();
   </script>
